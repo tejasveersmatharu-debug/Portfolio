@@ -344,18 +344,20 @@
 /* LEFT SIDE */
 .contact-left {
   flex: 1;
-  max-width: 600px;
+  max-width: 1000px;
 }
 
 .contact-left h1 {
   font-size: 48px;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
+  margin-left: 90px;
   color: #aacbff;
 }
 
 .contact-left p {
   font-size: 20px;
   line-height: 1.6;
+  padding-left: 150px;
   color: #9CA3AF;
 }
 
