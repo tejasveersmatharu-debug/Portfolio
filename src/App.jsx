@@ -8,9 +8,10 @@ import Contact from "./components/Contact";
 import CursorGlow from "./components/CursorGlow";
 
 function App() {
+  const width = window.innerWidth;
   return (
     <>
-      <CursorGlow />
+      {width < 700 ? <CursorGlow /> : null}
       <Header />
       <Body />
       <Projects />

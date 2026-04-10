@@ -36,7 +36,9 @@ const Body = () => {
             </button>
           </div>
         </div>
-        <div className="hero-right">{/* Placeholder for now */}</div>
+        <div className="hero-right">
+          <img src="/profile.jpg" alt="Tejasveer" />
+        </div>
       </div>
     </div>
   );

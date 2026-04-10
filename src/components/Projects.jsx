@@ -9,39 +9,37 @@ import { useState, useEffect } from "react";
 
 export default function Projects() {
   const containerRef = useRef(null);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   });
-  const [vw, setVw] = useState(0);
 
+  const [vw, setVw] = useState(0);
+  const [maxTranslate, setMaxTranslate] = useState(0);
+
+  // Handle screen width
   useEffect(() => {
     const update = () => setVw(window.innerWidth);
     update();
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
   }, []);
-  const totalWidth = items.length * ITEM_WIDTH + (items.length - 1) * GAP;
 
-  useEffect(() => {
-    const handleResize = () => setVw(window.innerWidth);
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const initialOffset = 0;
-  const [maxTranslate, setMaxTranslate] = useState(0);
-
+  // Disable animation on mobile
+  const isMobile = vw < 700;
+  // Calculate exact scroll distance
   useEffect(() => {
     const update = () => {
       const gallery = containerRef.current?.querySelector(".gallery");
-      if (!gallery) return;
+      const container = containerRef.current;
+
+      if (!gallery || !container) return;
 
       const scrollWidth = gallery.scrollWidth;
-      const vw = window.innerWidth;
+      const containerWidth = container.offsetWidth;
 
-      setMaxTranslate(scrollWidth - vw + 50); // 50 = your padding-left
+      setMaxTranslate(scrollWidth - containerWidth + 20); // keep your padding
     };
 
     update();
@@ -49,7 +47,11 @@ export default function Projects() {
     return () => window.removeEventListener("resize", update);
   }, []);
 
-  const x = useTransform(scrollYProgress, [0, 1], [0, -maxTranslate]);
+  const x = useTransform(
+    scrollYProgress,
+    [0, 1],
+    isMobile ? [0, 0] : [0, -maxTranslate],
+  );
 
   return (
     <div id="example" className="outer">
@@ -247,7 +249,7 @@ function StyleSheet() {
 
             @media (max-width: 600px) {
                 .sticky-wrapper {
-                    width: 280px;
+                    width: 100vw;
                 }
 
                 .gallery {
@@ -255,8 +257,8 @@ function StyleSheet() {
                 }
 
                 .gallery-item {
-                    width: 280px;
-                    height: 350px;
+                    width: min(85vw, 340px);
+                    height: 420px;
                 }
             }
 
