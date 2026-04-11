@@ -12,7 +12,7 @@ function App() {
   const width = window.innerWidth;
   return (
     <>
-      {width < 700 ? <CursorGlow /> : null}
+      {width > 700 ? <CursorGlow /> : null}
       <Header />
       <Body />
       <Projects />
