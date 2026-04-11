@@ -6,6 +6,7 @@ import Projects from "./components/Projects";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import CursorGlow from "./components/CursorGlow";
+import Footer from "./components/Footer";
 
 function App() {
   const width = window.innerWidth;
@@ -17,6 +18,7 @@ function App() {
       <Projects />
       <About />
       <Contact />
+      <Footer />
     </>
   );
 }

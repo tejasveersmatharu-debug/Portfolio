@@ -2,6 +2,7 @@ import githubLogo from "../images/github.png";
 import ld from "../images/ld.png";
 import x from "../images/x.png";
 import { motion } from "motion/react";
+import cfLogo from "../images/cf.png";
 
 const Contact = () => {
   return (
@@ -49,7 +50,7 @@ const Contact = () => {
           </div>
         </div>
         <div className="other-links">
-          <h4>Also reach me on:</h4>
+          <h4>Other links</h4>
           <motion.ul
             className="contact-links"
             initial="hidden"
@@ -90,6 +91,15 @@ const Contact = () => {
             >
               <img src={x} className="logo" />
               <p>X</p>
+            </motion.li>
+            <motion.li
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0 },
+              }}
+            >
+              <img src={cfLogo} className="logo" />
+              <p>CodeForces</p>
             </motion.li>
           </motion.ul>
         </div>

@@ -1,9 +1,10 @@
+import myLogo from "../images/logo.png";
 const Header = () => {
   return (
     <div className="outer_header">
       <div className="container header">
         <div className="logo">
-          <h1>Tejasveer.</h1>
+          <img src={myLogo} />
         </div>
 
         <div className="links">

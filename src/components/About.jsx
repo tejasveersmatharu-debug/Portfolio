@@ -29,7 +29,7 @@ const About = () => {
           </div> */}
           <div className="skills-list">
             <div className="dev-skills-row row">
-              <h4>dev skills</h4>
+              <h4>Developer Skills</h4>
               <ul className="dev-skills-ul  skill-list">
                 <li>
                   <div className="skill-icon">
@@ -58,7 +58,7 @@ const About = () => {
               </ul>
             </div>
             <div className="ops-skills-row row">
-              <h4>dev-ops skills</h4>
+              <h4>Dev-Ops Skills</h4>
               <ul className="dev-skills-ul skill-list">
                 <li>
                   <div className="skill-icon">
@@ -75,7 +75,7 @@ const About = () => {
               </ul>
             </div>
             <div className="lib-skills-row row">
-              <h4>libraries skills</h4>
+              <h4>Libraries Skills</h4>
               <ul className="lib-skills-ul skill-list">
                 <li>
                   <div className="skill-icon">

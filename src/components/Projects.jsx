@@ -314,7 +314,7 @@ const items = [
     label: "Social.ly",
     image: socially,
     description:
-      "A Social Media Dashboard, which allows us to Delete and Add custom posts, making changes to APIs.",
+      "A Social Media Dashboard, allowing us to Delete and Add custom posts, making changes to APIs.",
     tech: ["React", "JavaScript", "HTML", "CSS", "Router"],
     live: "https://social-ly.netlify.app/",
     github: "https://github.com/tejasveersmatharu-debug/Soci",

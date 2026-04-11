@@ -15,12 +15,10 @@ const Body = () => {
             <button
               className="btn_project"
               onClick={() => {
-                document.getElementById("example").scrollIntoView({
-                  behavior: "smooth",
-                });
+                window.open("#", "_blank");
               }}
             >
-              View Projects
+              View Resume
             </button>
 
             <button
