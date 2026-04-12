@@ -7,11 +7,14 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import CursorGlow from "./components/CursorGlow";
 import Footer from "./components/Footer";
+import CurvedLines from "./components/CurvedLines";
 
 function App() {
   const width = window.innerWidth;
   return (
     <>
+      <CurvedLines />
+      <div style={{ position: "relative", zIndex: 1 }}></div>
       {width > 700 ? <CursorGlow /> : null}
       <Header />
       <Body />

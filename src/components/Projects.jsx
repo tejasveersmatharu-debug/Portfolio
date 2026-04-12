@@ -3,6 +3,8 @@ import myntrass from "../images/myntraSS.png";
 import socially from "../images/socially.png";
 import weather from "../images/weather.png";
 import currently from "../images/currently.png";
+import pyclima from "../images/pyclima.png";
+import gitpro from "../images/gitpro.png";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
 import { useState, useEffect } from "react";
@@ -300,13 +302,13 @@ const items = [
   {
     id: 2,
     color: "#005cf08a",
-    label: "Demo",
-    image: "",
+    label: "PyClima Expert",
+    image: pyclima,
     description:
       "A platform where you can upload netCDF files to get visual illustrations!",
     tech: ["React", "JavaScript", "HTML", "CSS", "Python-Backend"],
-    live: "https://your-live-site.com",
-    github: "https://github.com/your-repo",
+    live: "https://py-clima.vercel.app/",
+    github: "https://github.com/tejasveersmatharu-debug/pyClima",
   },
   {
     id: 3,
@@ -345,11 +347,11 @@ const items = [
     id: 6,
     color: "#005cf08a",
     label: "Demo",
-    image: "/photos/tokyo-shinjuku-2/image-2.jpg",
+    image: gitpro,
     description: "Interactive dashboard with real-time UI updates.",
     tech: ["JavaScript", "API", "CSS"],
-    live: "#",
-    github: "#",
+    live: "https://github-profile-finder-jet-two.vercel.app/",
+    github: "https://github.com/tejasveersmatharu-debug/Github-Profile-Finder",
   },
 ];
 

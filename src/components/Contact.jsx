@@ -38,14 +38,16 @@ const Contact = () => {
       </div>
       <div className="contact-right">
         <div className="email">
-          <p>this is email sample text</p>
+          <p>Email me at: tejasveersmatharu@gmail.com</p>
           <div className="email-button">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <button className="btn_email">Email Me</button>
+              <a href="mailto:tejasveersmatharu@gmail.com">
+                <button className="btn_email">Email Me</button>
+              </a>
             </motion.div>
           </div>
         </div>
