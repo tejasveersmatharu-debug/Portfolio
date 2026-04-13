@@ -6,6 +6,7 @@ import dockerLogo from "../images/docker.png";
 import gitLogo from "../images/git.png";
 import reduxLogo from "../images/reduxx.png";
 import routerLogo from "../images/router.png";
+import { motion } from "motion/react";
 
 const About = () => {
   return (
@@ -15,13 +16,25 @@ const About = () => {
           <div className="about-header">
             <h1>About Me!</h1>
           </div>
-          <p>
-            I'm Tejasveer Singh, and i am currently studying chemical
-            engineering in first year at IIT-BHU. I am exxtremely passionate
-            about Frontend Developement, and love to create! I also love solving
-            real life challenges, Currently exploring deep learning through and
-            writing a research paper in medical imaging.
-          </p>
+          <motion.p
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="about-motion"
+          >
+            I'm Tejasveer, a Chemical Engineering student at IIT-BHU with a
+            serious passion for frontend development. For the past 1.5 years
+            I've been building for the web — crafting clean interfaces with
+            HTML, CSS, JavaScript and React.
+            <br />I love both the design and the code side of things, and I'm
+            always pushing to make something look better and feel smoother.
+            Outside the web, I'm currently writing a research paper on cancer
+            detection using deep learning — because I believe good tech should
+            solve real problems. <br />
+            <span className="highlight">
+              Hardworking, curious, and always building something.
+            </span>
+          </motion.p>
         </div>
         <div className="about-skills">
           {/* <div className="skills-heading">

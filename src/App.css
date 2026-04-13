@@ -85,8 +85,14 @@
     max-width: 100%;
   }
   .hero-right {
+    position: relative;
     flex: 1;
     color: #aacbff;
+  }
+  .hero-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .hero-left h1 {
     font-size: clamp(40px, 8vw, 100px);
@@ -155,6 +161,9 @@
     border-radius: 10px;
     cursor: pointer;
     transition: all 0.5s ease;
+  }
+  a {
+    text-decoration: none !important;
   }
   .btn_project:hover, .btn_github:hover{
     background-color: #3B82F6;
@@ -351,14 +360,15 @@
 .contact-left h1 {
   font-size: 48px;
   margin-bottom: 50px;
-  margin-left: 90px;
+  text-align: center;
   color: #aacbff;
 }
 
 .contact-left p {
   font-size: 20px;
   line-height: 1.6;
-  padding-left: 150px;
+  padding-left: 110px;
+  padding-right: 100px;
   color: #9CA3AF;
 }
 
@@ -523,6 +533,9 @@
 }
 .btn_email {
   transition: all 0.2s ease;
+}
+.hero {
+  gap: 50px;
 }
 
 /* hover */
@@ -703,17 +716,55 @@ html {
 .footer-p, .my-4 p {
   color: #bbdbffbf !important;
 }
+.profile-pic {
+  width: 260px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* for the pic  */
+.hero-right {
+  perspective: 1000px;
+}
+
+.profile-card-wrapper {
+  position: relative;
+  width: 260px;
+  height: 320px;
+  transform-style: preserve-3d;
+  border-radius: 16px;
+}
+
+.profile-card-wrapper::before,
+.profile-card-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+}
+
+.profile-card-wrapper::before {
+  background: #1a4fd6;
+  transform: rotate(-6deg);
+  opacity: 0.6;
+  z-index: -1;
+}
+
+.profile-card-wrapper::after {
+  background: #0d2fa8;
+  transform: rotate(-12deg);
+  opacity: 0.4;
+  z-index: -2;
+}
+
+
 
 /* 📱 MOBILE RESPONSIVENESS */
 @media (max-width: 700px) {
 
-  .hero {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding-top: 40px;
-    height: 95vh;
-  }
+ 
  .logo img {
     height: 50px;
     padding-bottom: 10px;  /* tablet */
@@ -743,15 +794,50 @@ html {
     margin-bottom: 20px;
   }
   .hero-right img {
-    width: 180px;
+    width: 350px;
   }
   .scroll-container {
     height: auto;
   }
-  .hero {
+   .hero {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
     padding: 40px 20px;
+    height: auto;
+    min-height: 95vh;
+  }
+
+  .hero_btn {
+    justify-content: center;
+  }
+  .hero-right {
+    margin-top: 24px;
+    margin-bottom: 20px;
+    perspective: none;
+  }
+  .contact-left p {
+    padding-left: 0;
+    padding-right: 10px;
+    text-align: center;
+  }
+
+  /* disable 3D card on mobile */
+  .profile-card-wrapper {
+    transform: none !important;
+    pointer-events: none;
+    width: 200px;
+    height: 250px;
+  }
+
+  .profile-card-wrapper::before,
+  .profile-card-wrapper::after {
+    display: none;
+  }
+
+  .profile-pic {
+    width: 200px;
+    height: 250px;
   }
 
   .hero-left {
@@ -816,7 +902,9 @@ html {
   padding-left: 0;
   padding-top: 40px;
 }
-
+.hero {
+  gap: 0px !important;
+}
 .about-container {
   flex-direction: column;
   gap: 20px;
@@ -830,7 +918,7 @@ html {
   width: 140px;
   height: 140px;
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: 100%;
 }
 .content-left p{
   font-size: 18px !important;
@@ -840,10 +928,23 @@ html {
   font-size: calc(1.375rem + 1.5vw) !important;
   margin-left: 0px !important;
 }
+.contact-heading motion.h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .contact-links {
   padding-left: 0px !important;
 }
 .row{
   width: 100vw !important;
 }
+}
+.about-motion {
+    font-size: 22px !important;
+    line-height: 1.6;
+    padding-left: 150px;
+    color: #9CA3AF;
+    opacity: 1;
+    transform: none;
 }

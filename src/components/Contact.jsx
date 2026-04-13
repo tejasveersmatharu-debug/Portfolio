@@ -8,7 +8,7 @@ const Contact = () => {
   return (
     <div id="contact-sec" className="contact-page">
       <div className="contact-left">
-        <div className="heading">
+        <div className="heading contact-heading">
           <motion.h1
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -24,15 +24,8 @@ const Contact = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishing software like Aldus
-            PageMaker including versions of Lorem Ipsum.
+            Got a project in mind, or just want to say hi? I'd love to hear from
+            you — drop me a mail and I'll get back as soon as I can.
           </motion.p>
         </div>
       </div>
@@ -73,8 +66,14 @@ const Contact = () => {
                 visible: { opacity: 1, y: 0 },
               }}
             >
-              <img src={githubLogo} className="logo" />
-              <p>GitHub</p>
+              {" "}
+              <a
+                href="https://github.com/tejasveersmatharu-debug"
+                target="_blank"
+              >
+                <img src={githubLogo} className="logo" />
+                <p>GitHub</p>
+              </a>
             </motion.li>
             <motion.li
               variants={{
@@ -82,8 +81,13 @@ const Contact = () => {
                 visible: { opacity: 1, y: 0 },
               }}
             >
-              <img src={ld} className="logo" />
-              <p>LinkedIn</p>
+              <a
+                href="https://www.linkedin.com/in/tejasveer-singh-matharu/"
+                target="_blank"
+              >
+                <img src={ld} className="logo" />
+                <p>LinkedIn</p>
+              </a>
             </motion.li>
             <motion.li
               variants={{
@@ -91,8 +95,10 @@ const Contact = () => {
                 visible: { opacity: 1, y: 0 },
               }}
             >
-              <img src={x} className="logo" />
-              <p>X</p>
+              <a href="https://x.com/TejasveerS46645" target="_blank">
+                <img src={x} className="logo" />
+                <p>X</p>
+              </a>
             </motion.li>
             <motion.li
               variants={{
@@ -100,8 +106,13 @@ const Contact = () => {
                 visible: { opacity: 1, y: 0 },
               }}
             >
-              <img src={cfLogo} className="logo" />
-              <p>CodeForces</p>
+              <a
+                href="https://codeforces.com/profile/HotSauceHacker"
+                target="_blank"
+              >
+                <img src={cfLogo} className="logo" />
+                <p>CodeForces</p>
+              </a>
             </motion.li>
           </motion.ul>
         </div>
