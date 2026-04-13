@@ -31,12 +31,9 @@ const Body = () => {
             Pixel-Perfect realities!
           </p>
           <div className="hero_btn">
-            <button
-              className="btn_project"
-              onClick={() => window.open("#", "_blank")}
-            >
-              View Resume
-            </button>
+            <a href="/tejasveer.pdf" target="_blank" rel="noopener noreferrer">
+              <button className="btn_project">View Resume</button>
+            </a>
             <button
               className="btn_github"
               onClick={() =>

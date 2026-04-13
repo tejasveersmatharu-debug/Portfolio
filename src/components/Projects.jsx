@@ -296,7 +296,7 @@ const items = [
     description:
       "Clone of an E-Commerce WebApp, which allows us to add, discard, and total the items in Cart.",
     tech: ["React", "JavaScript", "CSS", "HTML", "API"],
-    live: "https://e-commerce-clo-ne.netlify.app/",
+    live: "https://e-commerce-clone-i576olzym-tejasveersmatharu-debugs-projects.vercel.app/",
     github: "https://github.com/tejasveersmatharu-debug/E-Commerce-Clone",
   },
   {
@@ -318,7 +318,7 @@ const items = [
     description:
       "A Social Media Dashboard, allowing us to Delete and Add custom posts, making changes to APIs.",
     tech: ["React", "JavaScript", "HTML", "CSS", "Router"],
-    live: "https://social-ly.netlify.app/",
+    live: "https://soci-tztz.vercel.app/",
     github: "https://github.com/tejasveersmatharu-debug/Soci",
   },
   {
@@ -329,7 +329,7 @@ const items = [
     description:
       "Easy to Read Weather Dashboard which shows Weather information we need in day-to-day life.",
     tech: ["API", "JavaScript", "HTML", "CSS"],
-    live: "https://ezweatherly.netlify.app/",
+    live: "https://weather-app-v1-gamma.vercel.app/",
     github: "https://github.com/tejasveersmatharu-debug/Weather-App-V1-",
   },
   {
@@ -340,13 +340,13 @@ const items = [
     description:
       "Interactive Dashboard which lets us fetch Live exchange rates between different Currencies.",
     tech: ["API", "JavaScript", "HTML", "CSS"],
-    live: "https://currentl-y.netlify.app/",
+    live: "https://crurrent-ly-7iul.vercel.app/",
     github: "https://github.com/tejasveersmatharu-debug/Crurrent-ly",
   },
   {
     id: 6,
     color: "#005cf08a",
-    label: "Demo",
+    label: "GitHub Profile-finder",
     image: gitpro,
     description: "Interactive dashboard with real-time UI updates.",
     tech: ["JavaScript", "API", "CSS"],
