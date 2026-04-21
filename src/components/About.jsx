@@ -2,7 +2,7 @@ import jsLogo from "../images/JavaScript-logo.png";
 import htmlLogo from "../images/html.png";
 import cssLogo from "../images/css.png";
 import reactLogo from "../images/react.png";
-import dockerLogo from "../images/docker.png";
+import githubLogo from "../images/github.png";
 import gitLogo from "../images/git.png";
 import reduxLogo from "../images/reduxx.png";
 import routerLogo from "../images/router.png";
@@ -81,9 +81,9 @@ const About = () => {
                 </li>
                 <li>
                   <div className="skill-icon">
-                    <img src={dockerLogo} />
+                    <img src={githubLogo} />
                   </div>
-                  <p>Docker</p>
+                  <p>GitHub</p>
                 </li>
               </ul>
             </div>
