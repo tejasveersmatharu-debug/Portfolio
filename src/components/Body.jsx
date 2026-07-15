@@ -74,6 +74,7 @@ const Body = () => {
           <VerticalTimelineElement
             date="May 2026 - Jul 2026"
             iconStyle={{ background: "#3a8fff" }}
+            intersectionObserverProps={{ rootMargin: "0px 0px -200px 0px", triggerOnce: false }}
           >
             <h3>Software Developer — OpenCubicles</h3>
             <p>Shipped features on production React Native app...</p>
@@ -81,6 +82,7 @@ const Body = () => {
           <VerticalTimelineElement
             date="Mar 2026 - Present"
             iconStyle={{ background: "#3a8fff" }}
+            intersectionObserverProps={{ rootMargin: "0px 0px -200px 0px", triggerOnce: false }}
           >
             <h3>Researcher — IIT (BHU)</h3>
             <p>Reviewed papers on UNet variants...</p>

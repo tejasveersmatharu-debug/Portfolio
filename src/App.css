@@ -791,7 +791,8 @@ html {
     margin-bottom: 20px;
   }
   .hero-right img {
-    width: 350px;
+    max-width: 100%;
+    height: auto;
   }
   .scroll-container {
     height: auto;
@@ -838,7 +839,7 @@ html {
   }
 
   .hero-left {
-    max-width: 100vw;
+    max-width: 100%;
   }
   .links {
     display: none;
@@ -862,7 +863,7 @@ html {
     margin-left: 0px;
   }
   .gallery-item {
-    width: min(100vw, 400px);
+    width: min(100%, 400px);
     height: auto;
   }
   .scroll-container {
@@ -934,7 +935,10 @@ html {
     padding-left: 0px !important;
   }
   .row {
-    width: 100vw !important;
+    width: 100% !important;
+  }
+  .about-motion {
+    padding-left: 0 !important;
   }
 }
 .about-motion {
@@ -945,3 +949,123 @@ html {
   opacity: 1;
   transform: none;
 }
+
+/* ==========================================================================
+   Vertical Timeline Custom Styles (Premium Glassmorphism & Glowing Accents)
+   ========================================================================== */
+
+/* Smoothly fade the vertical line at the top and bottom */
+.vertical-timeline::before {
+  top: 30px !important;
+  height: calc(100% - 60px) !important;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #3a8fff 15%,
+    #3a8fff 85%,
+    transparent 100%
+  ) !important;
+  width: 3px !important;
+}
+
+/* Style the card body with dark glassmorphism */
+.vertical-timeline-element-content {
+  background: rgba(17, 24, 39, 0.6) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(59, 130, 246, 0.15) !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3) !important;
+  border-radius: 12px !important;
+  padding: 2em !important;
+}
+
+/* Fix card pointing arrows to match the dark glass background */
+.vertical-timeline-element-content-arrow {
+  border-right-color: rgba(17, 24, 39, 0.6) !important;
+}
+
+@media only screen and (min-width: 1170px) {
+  .vertical-timeline-element-content-arrow {
+    border-left-color: rgba(17, 24, 39, 0.6) !important;
+  }
+  .vertical-timeline-element--right .vertical-timeline-element-content-arrow {
+    border-right-color: rgba(17, 24, 39, 0.6) !important;
+    border-left-color: transparent !important;
+  }
+}
+
+/* Add a glowing drop shadow/box-shadow to the timeline dots */
+.vertical-timeline-element-icon {
+  box-shadow: 
+    0 0 0 4px #3a8fff, 
+    0 0 15px rgba(58, 143, 255, 0.5) !important;
+  transition: transform 0.3s ease;
+}
+
+/* Hover zoom effect on the timeline dots */
+.vertical-timeline-element:hover .vertical-timeline-element-icon {
+  transform: scale(1.1);
+}
+
+/* Role / Job Title */
+.vertical-timeline-element-content h3 {
+  color: #60a5fa !important;
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  margin-bottom: 6px !important;
+}
+
+/* Description text */
+.vertical-timeline-element-content p {
+  color: #cbd5e1 !important;
+  font-size: 15px !important;
+  line-height: 1.6 !important;
+}
+
+/* Date label */
+.vertical-timeline-element-date {
+  color: #9ca3af !important;
+  font-weight: 500 !important;
+  opacity: 0.8;
+}
+
+/* Smooth transition when fading out (going away) */
+.vertical-timeline-element-content {
+  transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s ease !important;
+}
+
+/* Base fade-out state for hidden elements */
+.vertical-timeline--animate .vertical-timeline-element-content.is-hidden {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  transform: translateX(-100px) !important; /* Left cards slide left */
+  transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s ease !important;
+}
+
+/* Right-aligned cards slide right when hidden (Desktop) */
+@media only screen and (min-width: 1170px) {
+  .vertical-timeline--two-columns .vertical-timeline-element.vertical-timeline-element--right .vertical-timeline-element-content.is-hidden,
+  .vertical-timeline--two-columns .vertical-timeline-element:nth-child(2n):not(.vertical-timeline-element--left) .vertical-timeline-element-content.is-hidden {
+    transform: translateX(100px) !important;
+  }
+}
+
+/* Mobile cards slide right when hidden (to match the mobile bounce-in-inverse animation) */
+@media only screen and (max-width: 1169px) {
+  .vertical-timeline--animate .vertical-timeline-element-content.is-hidden {
+    transform: translateX(100px) !important;
+  }
+}
+
+/* Icon (dots) fade-out transition */
+.vertical-timeline-element-icon {
+  transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s ease !important;
+}
+
+.vertical-timeline--animate .vertical-timeline-element-icon.is-hidden {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  transform: scale(0.5) !important;
+  transition: opacity 0.5s ease, transform 0.5s ease, visibility 0.5s ease !important;
+}
+

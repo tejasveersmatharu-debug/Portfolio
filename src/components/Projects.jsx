@@ -158,7 +158,7 @@ function StyleSheet() {
                 position: sticky;
                 top: 0;
                 height: 100vh;
-                width: 100vw;
+                width: 100%;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -251,7 +251,7 @@ function StyleSheet() {
 
             @media (max-width: 600px) {
                 .sticky-wrapper {
-                    width: 100vw;
+                    width: 100%;
                 }
 
                 .gallery {
