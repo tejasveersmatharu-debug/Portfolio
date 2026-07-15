@@ -5,9 +5,11 @@
   padding: 0 20px;
 }
 
+html,
 body {
   margin: 0;
   padding: 0;
+  width: 100%;
   overflow-x: hidden;
 }
 
@@ -15,6 +17,7 @@ body {
 .outer {
   width: 100%;
   background-color: #0b0f19;
+  overflow-x: hidden;
 }
 body {
   -webkit-font-smoothing: antialiased;
@@ -72,6 +75,7 @@ body {
 
 .hero_section {
   background-color: #0b0f19;
+  overflow: hidden;
 }
 .hero {
   width: 100%;
@@ -184,6 +188,7 @@ a {
 }
 .about-section {
   background-color: #0b0f19;
+  overflow: hidden;
 }
 
 .about-container {
@@ -221,6 +226,20 @@ a {
   font-size: 25px;
   padding-left: 60px;
   padding-top: 80px;
+}
+
+.about-motion {
+  font-size: 22px !important;
+  line-height: 1.6;
+  padding-left: 150px;
+  color: #9ca3af;
+  opacity: 1;
+  transform: none;
+}
+
+.row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
 .about-skills {
@@ -325,6 +344,7 @@ li {
   gap: 40px; /* reduced */
   flex-wrap: wrap;
   background-color: #0b0f19; /* IMPORTANT */
+  overflow: hidden;
 }
 @media (max-width: 600px) {
   .contact-page {
@@ -855,16 +875,18 @@ html {
     flex-direction: column !important;
     transform: none !important;
     align-items: center;
-    padding-left: 30px !important;
-    margin-right: 20px !important;
+    padding-left: 0px !important;
+    margin-right: 0px !important;
     overflow: hidden;
     gap: 20px;
     height: 100%;
     margin-left: 0px;
+    width: 100%;
   }
   .gallery-item {
-    width: min(100%, 400px);
-    height: auto;
+    width: min(90vw, 340px) !important;
+    height: 440px !important;
+    flex: 0 0 440px !important;
   }
   .scroll-container {
     height: 100% !important;
@@ -941,15 +963,19 @@ html {
     padding-left: 0 !important;
   }
 }
-.about-motion {
-  font-size: 22px !important;
-  line-height: 1.6;
-  padding-left: 150px;
-  color: #9ca3af;
-  opacity: 1;
-  transform: none;
-}
 
+@media (min-width: 701px) and (max-width: 1024px) {
+  .about-body {
+    margin-left: 40px;
+  }
+  .about-motion {
+    padding-left: 40px !important;
+  }
+  .contact-left p {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
 /* ==========================================================================
    Vertical Timeline Custom Styles (Premium Glassmorphism & Glowing Accents)
    ========================================================================== */

@@ -249,18 +249,22 @@ function StyleSheet() {
                 background-color: #0B0F19;
             }
 
-            @media (max-width: 600px) {
+            @media (max-width: 700px) {
                 .sticky-wrapper {
                     width: 100%;
                 }
 
                 .gallery {
                     gap: 15px;
+                    padding-left: 0 !important;
+                    margin-right: 0 !important;
+                    margin-left: 0 !important;
                 }
 
                 .gallery-item {
-                    width: min(85vw, 340px);
-                    height: 420px;
+                    width: min(90vw, 340px) !important;
+                    height: 440px !important;
+                    flex: 0 0 440px !important;
                 }
             }
 
