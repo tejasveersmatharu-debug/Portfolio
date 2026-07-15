@@ -1,6 +1,11 @@
 import "./Projects";
 import pic from "../images/pic.jpeg";
 import { useRef } from "react";
+import {
+  VerticalTimeline,
+  VerticalTimelineElement,
+} from "react-vertical-timeline-component";
+import "react-vertical-timeline-component/style.min.css";
 
 const Body = () => {
   const cardRef = useRef(null);
@@ -20,46 +25,69 @@ const Body = () => {
   };
 
   return (
-    <div className="hero_section outer">
-      <div className="hero container">
-        <div className="hero-left">
-          <h3>Hi! I'm</h3>
-          <h1>Tejasveer.</h1>
-          <h2>A Fresher @IIT-BHU. I design and build things for the web.</h2>
-          <p>
-            I <span className="highlight">Love</span> turning mockups into
-            Pixel-Perfect realities!
-          </p>
-          <div className="hero_btn">
-            <a href="/tejasveer.pdf" target="_blank" rel="noopener noreferrer">
-              <button className="btn_project">View Resume</button>
-            </a>
-            <button
-              className="btn_github"
-              onClick={() =>
-                window.open(
-                  "https://github.com/tejasveersmatharu-debug",
-                  "_blank",
-                )
-              }
+    <>
+      <div className="hero_section outer">
+        <div className="hero container">
+          <div className="hero-left">
+            <h3>Hi! I'm</h3>
+            <h1>Tejasveer.</h1>
+            <h2>A Fresher @IIT-BHU. I design and build things for the web.</h2>
+            <p>
+              I <span className="highlight">Love</span> turning mockups into
+              Pixel-Perfect realities!
+            </p>
+            <div className="hero_btn">
+              <a
+                href="/tejasveer.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <button className="btn_project">View Resume</button>
+              </a>
+              <button
+                className="btn_github"
+                onClick={() =>
+                  window.open(
+                    "https://github.com/tejasveersmatharu-debug",
+                    "_blank",
+                  )
+                }
+              >
+                GitHub
+              </button>
+            </div>
+          </div>
+
+          <div className="hero-right">
+            <div
+              className="profile-card-wrapper"
+              ref={cardRef}
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
             >
-              GitHub
-            </button>
+              <img src={pic} alt="Tejasveer" className="profile-pic" />
+            </div>
           </div>
         </div>
 
-        <div className="hero-right">
-          <div
-            className="profile-card-wrapper"
-            ref={cardRef}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
+        <VerticalTimeline>
+          <VerticalTimelineElement
+            date="May 2026 - Jul 2026"
+            iconStyle={{ background: "#3a8fff" }}
           >
-            <img src={pic} alt="Tejasveer" className="profile-pic" />
-          </div>
-        </div>
+            <h3>Software Developer — OpenCubicles</h3>
+            <p>Shipped features on production React Native app...</p>
+          </VerticalTimelineElement>
+          <VerticalTimelineElement
+            date="Mar 2026 - Present"
+            iconStyle={{ background: "#3a8fff" }}
+          >
+            <h3>Researcher — IIT (BHU)</h3>
+            <p>Reviewed papers on UNet variants...</p>
+          </VerticalTimelineElement>
+        </VerticalTimeline>
       </div>
-    </div>
+    </>
   );
 };
 

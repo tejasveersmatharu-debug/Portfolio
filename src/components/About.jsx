@@ -23,14 +23,17 @@ const About = () => {
             className="about-motion"
           >
             I'm Tejasveer, a Chemical Engineering student at IIT-BHU with a
-            serious passion for frontend development. For the past 1.5 years
-            I've been building for the web — crafting clean interfaces with
-            HTML, CSS, JavaScript and React.
-            <br />I love both the design and the code side of things, and I'm
-            always pushing to make something look better and feel smoother.
-            Outside the web, I'm currently writing a research paper on cancer
-            detection using deep learning — because I believe good tech should
-            solve real problems. <br />
+            serious passion for full-stack development. I've spent the last 1.5
+            years building for the web and mobile — from React and React Native
+            frontends to Node.js/Express backends deployed on AWS.
+            <br />
+            I recently interned at OpenCubicles, shipping features on a
+            production React Native app and working across the video processing
+            pipeline. I love both the design and the code side of things.
+            <br />
+            Outside of that, I'm currently a Researcher at IIT-BHU, working on a
+            deep learning paper for cancer detection — because I believe good
+            tech should solve real problems. <br />
             <span className="highlight">
               Hardworking, curious, and always building something.
             </span>
