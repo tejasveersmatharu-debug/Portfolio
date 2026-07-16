@@ -6,7 +6,63 @@ import githubLogo from "../images/github.png";
 import gitLogo from "../images/git.png";
 import reduxLogo from "../images/reduxx.png";
 import routerLogo from "../images/router.png";
+import mongoLogo from "../images/Mongo.png";
+import nodeLogo from "../images/Node.png";
+import awsLogo from "../images/aws.png";
+import dockerLogo from "../images/docker.png";
+import nginxLogo from "../images/nginx.png";
+import postmanLogo from "../images/postman.png";
+import supabaseLogo from "../images/supabase.png";
+import redisLogo from "../images/pngegg.png";
 import { motion } from "motion/react";
+
+const frontendSkills = [
+  { name: "HTML", logo: htmlLogo },
+  { name: "CSS", logo: cssLogo },
+  { name: "JavaScript", logo: jsLogo },
+  { name: "React", logo: reactLogo },
+  { name: "Redux", logo: reduxLogo },
+  { name: "React Router", logo: routerLogo },
+];
+
+const backendSkills = [
+  { name: "Node.js", logo: nodeLogo },
+  { name: "MongoDB", logo: mongoLogo },
+  { name: "Redis", logo: redisLogo },
+  { name: "Supabase", logo: supabaseLogo },
+];
+
+const devOpsTools = [
+  { name: "Git", logo: gitLogo },
+  { name: "GitHub", logo: githubLogo },
+  { name: "AWS", logo: awsLogo },
+  { name: "Docker", logo: dockerLogo },
+  { name: "Nginx", logo: nginxLogo },
+  { name: "Postman", logo: postmanLogo },
+];
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, scale: 0.8, y: 15 },
+  visible: { 
+    opacity: 1, 
+    scale: 1, 
+    y: 0,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 12
+    }
+  },
+};
 
 const About = () => {
   return (
@@ -40,72 +96,65 @@ const About = () => {
           </motion.p>
         </div>
         <div className="about-skills">
-          {/* <div className="skills-heading">
-            <h2>Skills:</h2>
-          </div> */}
           <div className="skills-list">
-            <div className="dev-skills-row row">
-              <h4>Developer Skills</h4>
-              <ul className="dev-skills-ul  skill-list">
-                <li>
-                  <div className="skill-icon">
-                    <img src={htmlLogo} />
-                  </div>
-                  <p>HTML</p>
-                </li>
-                <li>
-                  <div className="skill-icon">
-                    <img src={cssLogo} />
-                  </div>
-                  <p>CSS</p>
-                </li>
-                <li>
-                  <div className="skill-icon">
-                    <img src={jsLogo} />
-                  </div>
-                  <p>JavaScript</p>
-                </li>
-                <li>
-                  <div className="skill-icon">
-                    <img src={reactLogo} />
-                  </div>
-                  <p>React</p>
-                </li>
-              </ul>
+            <div className="skills-group-card">
+              <h4>Frontend Development</h4>
+              <motion.ul 
+                className="dev-skills-ul skill-list"
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+              >
+                {frontendSkills.map((skill) => (
+                  <motion.li key={skill.name} variants={itemVariants}>
+                    <div className="skill-icon">
+                      <img src={skill.logo} alt={skill.name} />
+                    </div>
+                    <p>{skill.name}</p>
+                  </motion.li>
+                ))}
+              </motion.ul>
             </div>
-            <div className="ops-skills-row row">
-              <h4>Dev-Ops Skills</h4>
-              <ul className="dev-skills-ul skill-list">
-                <li>
-                  <div className="skill-icon">
-                    <img src={gitLogo} />
-                  </div>
-                  <p>Git</p>
-                </li>
-                <li>
-                  <div className="skill-icon">
-                    <img src={githubLogo} />
-                  </div>
-                  <p>GitHub</p>
-                </li>
-              </ul>
+
+            <div className="skills-group-card">
+              <h4>Backend & Databases</h4>
+              <motion.ul 
+                className="dev-skills-ul skill-list"
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+              >
+                {backendSkills.map((skill) => (
+                  <motion.li key={skill.name} variants={itemVariants}>
+                    <div className="skill-icon">
+                      <img src={skill.logo} alt={skill.name} />
+                    </div>
+                    <p>{skill.name}</p>
+                  </motion.li>
+                ))}
+              </motion.ul>
             </div>
-            <div className="lib-skills-row row">
-              <h4>Libraries Skills</h4>
-              <ul className="lib-skills-ul skill-list">
-                <li>
-                  <div className="skill-icon">
-                    <img src={reduxLogo} />
-                    <p>Redux</p>
-                  </div>
-                </li>
-                <li>
-                  <div className="skill-icon">
-                    <img src={routerLogo} />
-                    <p>React Router</p>
-                  </div>
-                </li>
-              </ul>
+
+            <div className="skills-group-card">
+              <h4>DevOps & Tools</h4>
+              <motion.ul 
+                className="lib-skills-ul skill-list"
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-50px" }}
+              >
+                {devOpsTools.map((skill) => (
+                  <motion.li key={skill.name} variants={itemVariants}>
+                    <div className="skill-icon">
+                      <img src={skill.logo} alt={skill.name} />
+                    </div>
+                    <p>{skill.name}</p>
+                  </motion.li>
+                ))}
+              </motion.ul>
             </div>
           </div>
         </div>

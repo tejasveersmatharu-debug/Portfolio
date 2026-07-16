@@ -31,7 +31,7 @@ const Body = () => {
           <div className="hero-left">
             <h3>Hi! I'm</h3>
             <h1>Tejasveer.</h1>
-            <h2>A Fresher @IIT-BHU. I design and build things for the web.</h2>
+            <h2>A Sophomore @IIT-BHU. I design and build things for the web.</h2>
             <p>
               I <span className="highlight">Love</span> turning mockups into
               Pixel-Perfect realities!

@@ -6,8 +6,7 @@ import currently from "../images/currently.png";
 import pyclima from "../images/pyclima.png";
 import gitpro from "../images/gitpro.png";
 import { motion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
-import { useState, useEffect } from "react";
+import { useRef, useState, useEffect, useCallback } from "react";
 
 export default function Projects() {
   const containerRef = useRef(null);
@@ -17,8 +16,14 @@ export default function Projects() {
     offset: ["start start", "end end"],
   });
 
-  const [vw, setVw] = useState(0);
+  // SSR-safe initialisation – avoids the brief isMobile flicker on mount
+  const [vw, setVw] = useState(() =>
+    typeof window !== "undefined" ? window.innerWidth : 1024,
+  );
   const [maxTranslate, setMaxTranslate] = useState(0);
+  const [containerHeight, setContainerHeight] = useState(null);
+  // 'before' = not yet pinned, 'pinned' = fixed to viewport, 'after' = parked at bottom
+  const [pinState, setPinState] = useState("before");
 
   // Handle screen width
   useEffect(() => {
@@ -30,7 +35,8 @@ export default function Projects() {
 
   // Disable animation on mobile
   const isMobile = vw < 700;
-  // Calculate exact scroll distance
+
+  // Calculate exact scroll distance & dynamic container height
   useEffect(() => {
     const update = () => {
       const gallery = containerRef.current?.querySelector(".gallery");
@@ -40,14 +46,83 @@ export default function Projects() {
 
       const scrollWidth = gallery.scrollWidth;
       const containerWidth = container.offsetWidth;
+      const translate = scrollWidth - containerWidth + 20; // keep your padding
 
-      setMaxTranslate(scrollWidth - containerWidth + 20); // keep your padding
+      setMaxTranslate(translate);
+
+      // Dynamic height = horizontal travel + one viewport (for the pinned section)
+      // Only apply on desktop; mobile uses CSS fallback (no sticky pin)
+      if (window.innerWidth >= 700) {
+        setContainerHeight(translate + window.innerHeight);
+      } else {
+        setContainerHeight(null);
+      }
     };
 
     update();
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
   }, []);
+
+  // --- Scroll-driven pinning (replaces position: sticky) ---
+  const rafRef = useRef(null);
+
+  const handleScroll = useCallback(() => {
+    if (rafRef.current) return; // already scheduled
+    rafRef.current = requestAnimationFrame(() => {
+      rafRef.current = null;
+      const el = containerRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const vh = window.innerHeight;
+
+      if (rect.top > 0) {
+        setPinState("before");
+      } else if (rect.bottom >= vh) {
+        setPinState("pinned");
+      } else {
+        setPinState("after");
+      }
+    });
+  }, []);
+
+  useEffect(() => {
+    if (isMobile) {
+      setPinState("before"); // no pinning on mobile
+      return;
+    }
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll(); // run once on mount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+    };
+  }, [isMobile, handleScroll]);
+
+  // Compute inline styles for .sticky-wrapper based on pin state
+  const stickyStyles = (() => {
+    if (isMobile) return undefined; // mobile: let CSS handle it
+    switch (pinState) {
+      case "pinned":
+        return {
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100vh",
+        };
+      case "after":
+        return {
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          width: "100%",
+          height: "100vh",
+        };
+      default: // 'before'
+        return { position: "relative" };
+    }
+  })();
 
   const x = useTransform(
     scrollYProgress,
@@ -57,8 +132,12 @@ export default function Projects() {
 
   return (
     <div id="example" className="outer">
-      <div ref={containerRef} className="scroll-container">
-        <div className="sticky-wrapper">
+      <div
+        ref={containerRef}
+        className="scroll-container"
+        style={containerHeight ? { height: containerHeight } : undefined}
+      >
+        <div className="sticky-wrapper" style={stickyStyles}>
           <h1 className="impact">Projects.</h1>
 
           <motion.div className="gallery" style={{ x }}>
@@ -155,8 +234,7 @@ function StyleSheet() {
             }
 
             .sticky-wrapper {
-                position: sticky;
-                top: 0;
+                position: relative;
                 height: 100vh;
                 width: 100%;
                 display: flex;
@@ -250,7 +328,13 @@ function StyleSheet() {
             }
 
             @media (max-width: 700px) {
+                .scroll-container {
+                    height: auto !important;
+                }
+
                 .sticky-wrapper {
+                    position: relative !important;
+                    height: auto !important;
                     width: 100%;
                 }
 
