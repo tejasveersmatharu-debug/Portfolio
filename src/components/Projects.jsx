@@ -1,10 +1,12 @@
 "use client";
 import myntrass from "../images/myntraSS.png";
+import makemyquiz from "../images/makemyquiz.png";
 import socially from "../images/socially.png";
 import weather from "../images/weather.png";
 import currently from "../images/currently.png";
 import pyclima from "../images/pyclima.png";
 import gitpro from "../images/gitpro.png";
+import zingo from "../images/zingo.png";
 import { motion, useScroll, useTransform } from "motion/react";
 import { useRef, useState, useEffect, useCallback } from "react";
 
@@ -66,11 +68,14 @@ export default function Projects() {
 
   // --- Scroll-driven pinning (replaces position: sticky) ---
   const rafRef = useRef(null);
+  const mountedRef = useRef(true);
 
   const handleScroll = useCallback(() => {
     if (rafRef.current) return; // already scheduled
     rafRef.current = requestAnimationFrame(() => {
       rafRef.current = null;
+      // Bail out if the component was unmounted (StrictMode double-invoke safety)
+      if (!mountedRef.current) return;
       const el = containerRef.current;
       if (!el) return;
       const rect = el.getBoundingClientRect();
@@ -87,15 +92,24 @@ export default function Projects() {
   }, []);
 
   useEffect(() => {
+    // Reset in case of StrictMode remount (ref persists across unmount/remount)
+    mountedRef.current = true;
+
     if (isMobile) {
       setPinState("before"); // no pinning on mobile
-      return;
+      return () => {
+        mountedRef.current = false;
+      };
     }
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll(); // run once on mount
     return () => {
+      mountedRef.current = false;
       window.removeEventListener("scroll", handleScroll);
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current);
+        rafRef.current = null; // clear stale ref so remount can schedule new RAFs
+      }
     };
   }, [isMobile, handleScroll]);
 
@@ -379,6 +393,29 @@ const items = [
   {
     id: 1,
     color: "#005cf08a",
+    label: "MakeMyQuiz",
+    image: makemyquiz,
+    description:
+      "A Full-stack web-app which turns any PDF into instant Quizzes with Summary and QnA.",
+    tech: ["React", "NodeJs", "ExpressJs", "AWS", "MongoDB"],
+    live: "https://sdg-web-week4-5-tejasveersmatharu-d.vercel.app/",
+    github: "https://github.com/tejasveersmatharu-debug/sdg-web-week4-5-tejasveersmatharu-debug",
+  },
+  //https://zingo-chi.vercel.app/
+  {
+    id: 2,
+    color: "#005cf08a",
+    label: "Zingo!",
+    image: zingo,
+    description:
+      "A Full-stack web-app which simplifies Ticketing and Complaint Systems!.",
+    tech: ["React", "NodeJs", "ExpressJs", "MongoDB", "JWT", "Rest API"],
+    live: "https://zingo-chi.vercel.app/",
+    github: "https://github.com/tejasveersmatharu-debug/Zingo",
+  },
+  {
+    id: 2,
+    color: "#005cf08a",
     label: "E-Commerce Clone",
     image: myntrass,
     description:
@@ -388,7 +425,7 @@ const items = [
     github: "https://github.com/tejasveersmatharu-debug/E-Commerce-Clone",
   },
   {
-    id: 2,
+    id: 3,
     color: "#005cf08a",
     label: "PyClima Expert",
     image: pyclima,
@@ -399,7 +436,7 @@ const items = [
     github: "https://github.com/tejasveersmatharu-debug/pyClima",
   },
   {
-    id: 3,
+    id: 4,
     color: "#005cf08a",
     label: "Social.ly",
     image: socially,
@@ -410,7 +447,7 @@ const items = [
     github: "https://github.com/tejasveersmatharu-debug/Soci",
   },
   {
-    id: 4,
+    id: 5,
     color: "#005cf08a",
     label: "EzWeather",
     image: weather,
@@ -421,7 +458,7 @@ const items = [
     github: "https://github.com/tejasveersmatharu-debug/Weather-App-V1-",
   },
   {
-    id: 5,
+    id: 6,
     color: "#005cf08a",
     label: "Current.ly",
     image: currently,
@@ -432,7 +469,7 @@ const items = [
     github: "https://github.com/tejasveersmatharu-debug/Crurrent-ly",
   },
   {
-    id: 6,
+    id: 7,
     color: "#005cf08a",
     label: "GitHub Profile-finder",
     image: gitpro,
